@@ -1,0 +1,92 @@
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from data import Data
+from Locators import Locators
+
+
+class TestConstructor:
+
+    def test_constructor_from_profile(self, driver):
+        entry_path = driver.find_element(*Locators.Entrance_from_reg)
+        entry_path.click()
+        email_input = driver.find_element(*Locators.Reg_Email)
+        password_input = driver.find_element(*Locators.Reg_Password)
+        email_input.send_keys(Data.AUTH_EMAIL)
+        password_input.send_keys(Data.AUTH_PASSWORD)
+        entry = driver.find_element(*Locators.Entry_button)
+        entry.click()
+        profile = driver.find_element(*Locators.Profile_button)
+        profile.click()
+        constructor = driver.find_element(*Locators.Constructor_button)
+        constructor.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Order_button))
+        order_button = driver.find_element(*Locators.Order_button)
+        assert order_button.is_displayed()
+
+    def test_constructor_by_main_logo_from_profile(self, driver):
+        entry_path = driver.find_element(*Locators.Entrance_from_reg)
+        entry_path.click()
+        email_input = driver.find_element(*Locators.Reg_Email)
+        password_input = driver.find_element(*Locators.Reg_Password)
+        email_input.send_keys(Data.AUTH_EMAIL)
+        password_input.send_keys(Data.AUTH_PASSWORD)
+        entry = driver.find_element(*Locators.Entry_button)
+        entry.click()
+        profile = driver.find_element(*Locators.Profile_button)
+        profile.click()
+        main_path = driver.find_element(*Locators.Main_logo)
+        main_path.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Order_button))
+        order_button = driver.find_element(*Locators.Order_button)
+        assert order_button.is_displayed()
+
+    def test_constructor_parts_sauces(self, driver):
+        entry_path = driver.find_element(*Locators.Entrance_from_reg)
+        entry_path.click()
+        email_input = driver.find_element(*Locators.Reg_Email)
+        password_input = driver.find_element(*Locators.Reg_Password)
+        email_input.send_keys(Data.AUTH_EMAIL)
+        password_input.send_keys(Data.AUTH_PASSWORD)
+        entry = driver.find_element(*Locators.Entry_button)
+        entry.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Sauces_button))
+        sauce_button = driver.find_element(*Locators.Sauces_button)
+        sauce_button.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Sauces))
+        sauces = driver.find_element(*Locators.Sauces)
+        assert sauces.is_displayed()
+
+    def test_constructor_parts_buns(self, driver):
+        entry_path = driver.find_element(*Locators.Entrance_from_reg)
+        entry_path.click()
+        email_input = driver.find_element(*Locators.Reg_Email)
+        password_input = driver.find_element(*Locators.Reg_Password)
+        email_input.send_keys(Data.AUTH_EMAIL)
+        password_input.send_keys(Data.AUTH_PASSWORD)
+        entry = driver.find_element(*Locators.Entry_button)
+        entry.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Sauces_button))
+        sauce_button = driver.find_element(*Locators.Sauces_button)
+        sauce_button.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Buns_button))
+        buns_button = driver.find_element(*Locators.Buns_button)
+        buns_button.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Buns))
+        buns = driver.find_element(*Locators.Buns)
+        assert buns.is_displayed()
+
+    def test_constructor_parts_toppings(self, driver):
+        entry_path = driver.find_element(*Locators.Entrance_from_reg)
+        entry_path.click()
+        email_input = driver.find_element(*Locators.Reg_Email)
+        password_input = driver.find_element(*Locators.Reg_Password)
+        email_input.send_keys(Data.AUTH_EMAIL)
+        password_input.send_keys(Data.AUTH_PASSWORD)
+        entry = driver.find_element(*Locators.Entry_button)
+        entry.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Toppings_button))
+        toppings_button = driver.find_element(*Locators.Toppings_button)
+        toppings_button.click()
+        WebDriverWait(driver, Data.WAIT_TIME).until(EC.visibility_of_element_located(Locators.Toppings))
+        toppings = driver.find_element(*Locators.Toppings)
+        assert toppings.is_displayed()
